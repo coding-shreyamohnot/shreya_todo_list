@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<head>
+<title>ToDoList</title>
+<!-- we need links from bootstrap for css -->
+<link href="https://fonts.googleapis.com/css?family=Baloo+Bhai|Candal|Chewy&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/frontlist.css"/>
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1"/> -->
+</head>
+<body>
+    <center>
+      <!-- <div class="img1">
+      <img class="image" src="../public/stylesheet/todoimage.jpg"/>
+        <div class="img3">
+          <div class="img4">List</div>
+        </div>
+      </div> -->
+    <div class="todo-container">
+    <div>
+      <!-- <div class="pic"></div> -->
+      
+        <label>My ToDo List </label></div>
+        
+    <div class="todo">
+    <!-- we put the input box and button in form tag so that it can transfer all the data --> 
+    <form class="form" action ="/" method = "POST">  
+      <!-- we changed the method to GET from POST in order to undertand that how the data will pass to one page to another -->
+      <!-- we wrote action for which path the data has to be submitted -->
+      <!-- / is for the same page -->
+      <!-- so now we are using POST method -->
+        <input class="text" type="text" name="taskname" placeholder="enter task"/>    
+        <input class="button" type="submit" value="add me!"/>   
+    </form>
+   
+    <!-- ul-unodered list li-list item-->
+    <ul class="todo-list">
+    <% tasks.forEach(i => { %>
+    <% if(i._id==Id){ %>
+    <li class="todo-list-item">
+     <div class="todo-list-item-name">
+      
+        <form action="/edit/<%= i._id%>" method="POST"><input type="text" name="taskname" value="<%= i.content%>"/>
+        <input type ="submit" value="Update"/>
+        <a href="/">cancel</a>
+        </form>
+     <!-- span- it is used to keep the text, icon , anything on the same line  -->
+     <!-- <a class="edit" href="/edit/<%= i._id%>"><span class="fas fa-edit"></span></a> -->
+      <!-- fas-fontawsome -->
+     <!-- <a class="remove" href=""><span class="fas fa-times"></span></a> -->
+    </div>
+    </li>
+    <% }else{ %>
+      <li class="todo-list-item">
+        <div class="todo-list-item-name"><%= i.content%>
+        <!-- span- it is used to keep the text, icon , anything on the same line  -->
+        <a class="edit" href="/edit/<%= i._id%>"><span class="fas fa-edit"></span></a> 
+    
+         <!-- fas-fontawsome -->
+        <a class="remove" href=""><span class="fas fa-times"></span></a>
+       </div>
+       </li>
+       <% } %>
+  <% }) %>
+    </ul>
+    </div>
+    </div>
+  </center>
+   
+</body>
